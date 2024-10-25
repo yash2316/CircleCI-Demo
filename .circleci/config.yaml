@@ -19,6 +19,11 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+
+      - run:
+          name: Install Dependencies
+          command: npm install
+          
       - run:
           name: Pull Docker image
           command: docker pull email-validator-app || docker build -t email-validator-app .
