@@ -27,16 +27,14 @@ jobs:
       - run:
           name: Pull Docker image
           command: docker pull email-validator-app || docker build -t email-validator-app .
+          
       - run:
           name: Run the Docker container
           command: docker run -d -p 3000:3000 --name email-validator-app-container email-validator-app
-      - run:
-          name: logs
-          command: docker logs email-validator-app-container
-
+          
       - run:
           name: Run tests
-          command: npm test
+          command: docker exec email-validator-app-container npm test
       - run:
           name: Cleanup Docker container
           command: docker stop email-validator-app-container && docker rm email-validator-app-container
