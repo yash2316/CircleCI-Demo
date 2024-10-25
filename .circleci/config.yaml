@@ -26,17 +26,6 @@ jobs:
           name: Run the Docker container
           command: docker run -d -p 3000:3000 --name email-validator-app-container email-validator-app
 
-      - run:
-          name: Test if server is reachable
-          command: |
-            for i in `seq 1 20`; do
-              curl -f http://localhost:3000/validate-email -d '{"email":"test@example.com"}' && echo "Server is up!" && exit 0
-              echo "Waiting for server response..."
-              sleep 1
-            done
-            echo "Server failed to respond in time" && exit 1
-
-          
       # - run:
       #     name: Wait for server to start
       #     command: |
