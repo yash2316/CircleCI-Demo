@@ -47,7 +47,7 @@ describe('POST /validate-email', () => {
     it('should purposefully fail to terminate the pipeline', (done) => {
         request(baseUrl)
             .post('/validate-email')
-            .send({ email: 'purposefully-failing@example.com' })
+            .send({ email: 'purposefully-fai' })
             .expect(200)
             .end((err, res) => {
                 if (err) return done(err);
