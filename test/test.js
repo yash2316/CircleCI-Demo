@@ -41,4 +41,19 @@ describe('POST /validate-email', () => {
                 done();
             });
     });
+
+
+    // This test is designed to fail
+    it('should purposefully fail to terminate the pipeline', (done) => {
+        request(baseUrl)
+            .post('/validate-email')
+            .send({ email: 'purposefully-failing@example.com' })
+            .expect(200)
+            .end((err, res) => {
+                if (err) return done(err);
+                // This assertion will always fail
+                expect(res.body.valid).to.be.true;
+                done();
+            });
+    });
 });
