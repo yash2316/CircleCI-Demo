@@ -24,7 +24,7 @@ jobs:
           command: docker pull email-validator-app || docker build -t email-validator-app .
       - run:
           name: Run the Docker container
-          command: docker run -p 3000:3000 --name email-validator-app-container email-validator-app
+          command: docker run -d -p 3000:3000 --name email-validator-app-container email-validator-app
       - run:
           name: Wait for server to start
           command: |
