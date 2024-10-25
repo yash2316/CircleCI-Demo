@@ -30,16 +30,10 @@ jobs:
       - run:
           name: Run the Docker container
           command: docker run -d -p 3000:3000 --name email-validator-app-container email-validator-app
+      - run:
+          name: logs
+          command: docker logs email-validator-app-container
 
-      # - run:
-      #     name: Wait for server to start
-      #     command: |
-      #       for i in `seq 1 20`; do
-      #         nc -z localhost 3000 && echo "Server is up!" && exit 0
-      #         echo "Waiting for server..."
-      #         sleep 1
-      #       done
-      #       echo "Server failed to start in time" && exit 1
       - run:
           name: Run tests
           command: npm test
