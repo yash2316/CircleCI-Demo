@@ -52,7 +52,7 @@ jobs:
   
   deploy:
       docker:
-        - image: circleci/node:18
+        - image: circleci/node
       steps:
         - checkout
   
