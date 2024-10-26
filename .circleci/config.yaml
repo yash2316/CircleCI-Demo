@@ -62,7 +62,7 @@ jobs:
   
         - run:
             name: Deploy to Vercel
-            command: vercel --prod --token $VERCELTOKEN
+            command: vercel --prod --token $VERCELTOKEN --yes
 
 
 
