@@ -36,12 +36,12 @@ jobs:
           name: Run tests
           command: docker exec email-validator-app-container npm test > test-results.txt
 
-      - run:
-          name: Save Test Results as Artifacts
-          command: mv test-results.txt /tmp/test-results.txt
+      # - run:
+      #     name: Save Test Results as Artifacts
+      #     command: mv test-results.txt /tmp/test-results.txt
 
       - store_artifacts:
-          path: /tmp/test-results.txt
+          path: test-results.txt
           destination: test-results
 
           
