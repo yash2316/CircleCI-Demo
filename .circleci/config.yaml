@@ -49,20 +49,6 @@ jobs:
           name: Cleanup Docker container
           command: docker stop email-validator-app-container && docker rm email-validator-app-container
 
-  
-  deploy:
-      docker:
-        - image: circleci/node:18
-      steps:
-        - checkout
-  
-        - run:
-            name: Install Vercel CLI
-            command: sudo npm install -g vercel
-  
-        - run:
-            name: Deploy to Vercel
-            command: vercel --prod --token $VERCELTOKEN --confirm
 
 
 
@@ -74,6 +60,3 @@ workflows:
       - test:
           requires:
             - build
-      - deploy:
-          requires:
-            - test
